@@ -210,10 +210,3 @@ The entire development was directed through comprehensive master prompts, provid
    ```
    app/build/outputs/apk/debug/app-debug.apk
    ```
-
----
-
-## 📬 Contact & Submission Details
-
-* **Company**: ClickRetina Private Limited
-* **Submission Recipient**: [Hr@clickretina.co.in](mailto:Hr@clickretina.co.in?subject=Brewkery%20Android%20Assignment%20Submission)
