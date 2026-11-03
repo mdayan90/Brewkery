@@ -166,19 +166,22 @@ private fun StatusHeroCard(order: Order) {
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Brewing Icon Badge
+            // Brewing Logo Badge
             Box(
                 modifier = Modifier
-                    .size(80.dp)
+                    .size(90.dp)
                     .clip(CircleShape)
-                    .background(CremaDarker),
+                    .background(Color.White)
+                    .border(1.5.dp, WarmBorder, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = Icons.Default.Coffee,
-                    contentDescription = null,
-                    tint = Terracotta,
-                    modifier = Modifier.size(40.dp)
+                androidx.compose.foundation.Image(
+                    painter = androidx.compose.ui.res.painterResource(id = com.example.brewkery.R.drawable.logo),
+                    contentDescription = "Brewkery Logo",
+                    contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp)
                 )
             }
 
