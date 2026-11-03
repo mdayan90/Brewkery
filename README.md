@@ -69,6 +69,7 @@ Screen 4: Order Status  ◄──(Place Order)──  Screen 3: Cart & Checkout
 * **Language**: Kotlin 2.2.10
 * **UI**: Jetpack Compose (Material 3)
 * **Architecture**: MVVM + Repository Pattern
+* **Local Database / Persistence**: Room 2.8.4 (SQLite)
 * **Networking**: Retrofit 3.0.0 + OkHttp Logging Interceptor
 * **JSON Serialization**: Gson 2.12.1 + Converter Gson
 * **Image Loading**: Coil Compose 2.7.0
@@ -84,6 +85,14 @@ Screen 4: Order Status  ◄──(Place Order)──  Screen 3: Cart & Checkout
 com.example.brewkery/
 │
 ├── data/
+│   ├── local/
+│   │   ├── BrewkeryDatabase.kt
+│   │   ├── dao/
+│   │   │   ├── CartDao.kt
+│   │   │   └── OrderDao.kt
+│   │   └── entity/
+│   │       ├── CartItemEntity.kt
+│   │       └── ActiveOrderEntity.kt
 │   ├── model/
 │   │   ├── ShopMeta.kt
 │   │   ├── Category.kt

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.brewkery.data.repository.CartRepository
 import com.example.brewkery.navigation.AppNavGraph
 import com.example.brewkery.ui.theme.BrewkeryTheme
 import com.example.brewkery.ui.theme.Crema
@@ -15,6 +16,7 @@ import com.example.brewkery.ui.theme.Crema
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        CartRepository.initialize(applicationContext)
         enableEdgeToEdge()
         setContent {
             BrewkeryTheme {
