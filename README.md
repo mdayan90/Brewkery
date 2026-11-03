@@ -187,14 +187,16 @@ In accordance with the assignment guidelines, this project was developed using G
   > *"Take a look at my existing Kotlin code and suggest improvements. I want to keep it readable, avoid unnecessary complexity, and follow good Android development practices."*
 
 ### 3. What AI Got Right
-* Accurately mapped the polymorphic customizations object from the official endpoint where bakery items use `"sizes"` for item count and `"milk_options"` for spreads/toppings without breaking schema integrity.
-* Designed a clean, reactive `CartRepository` utilizing Kotlin `StateFlow` so that adding items or updating quantities immediately synchronizes with the floating cart pill on the Home screen and the cart screen.
-* Properly implemented the `$2.50` delivery fee and `8%` tax calculations with `BigDecimal.HALF_UP` rounding to avoid precision discrepancies.
+
+- Gemini helped me understand the API response and handle different customization options for coffee and bakery products.
+- It suggested using StateFlow for cart management, which made it easier to keep the cart count and total price updated across screens.
+- It also helped me implement the delivery fee and tax calculations correctly.
 
 ### 4. Real Bug Identified & Fixed
-* **Issue**: In `ItemDetailUiState.kt`, the sealed interface definition originally declared `data class Success` without explicitly implementing `: ItemDetailUiState`.
-* **Symptom**: During `compileDebugKotlin`, the Kotlin compiler produced an `Assignment type mismatch: expected ItemDetailUiState, actual ItemDetailUiState.Success`.
-* **Fix**: Updated `data class Success(...) : ItemDetailUiState` and resolved the type hierarchy cleanly.
+
+- **Issue:** I faced a Kotlin compilation error while working on the item detail screen.
+- **Cause:** The Success data class was not properly connected to the ItemDetailUiState interface.
+- **Fix:** I added the missing interface implementation, which resolved the compilation error and allowed the project to build successfully.
 
 ---
 
