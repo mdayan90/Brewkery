@@ -170,7 +170,7 @@ In accordance with the assignment guidelines, this project was developed using G
 The entire development was directed through comprehensive master prompts, providing the exact API endpoints, assignment references, domain rules, and step-by-step guidance:
 
 * **Prompt 1 (Complete Specification & API Architecture Brief)**:
-  > *"You are my Senior Android Engineer, Software Architect, UI/UX Designer, and Kotlin Expert. I am building a real Android Developer take-home assignment for ClickRetina Private Limited. Follow the official assignment reference at https://vivekshah138.github.io/Brewkery/ and the REST API endpoint `https://raw.githubusercontent.com/VivekShah138/Brewkery/main/data.json` (and `api/items/{id}.json`). Flow: Menu → Item Detail → Cart → Order Status. Inspect the actual JSON responses, map all fields, and prepare the 4-screen MVVM architecture and implementation plan before writing code."*
+  > *"The REST API endpoint https://raw.githubusercontent.com/VivekShah138/Brewkery/main/data.json (and api/items/{id}.json). Flow: Menu → Item Detail → Cart → Order Status. Inspect the actual JSON responses, map all fields, and prepare the 4-screen MVVM architecture and implementation plan before writing code."*
 
 * **Prompt 2 (Screen 2 Customizations, Pricing Rules & Add-to-Cart Flow)**:
   > *"Implement the dynamic product customization according to the API fields: sizes, milk_options, and sugar_levels. Do not invent pricing rules; use the actual extra_price fields from the API. The item total must recalculate in real-time as `(base_price + sizeExtra + milkExtra) * quantity`. Implement quantity steppers with boundary checks (1 to 20), and wire 'Add to Cart' to update the reactive in-memory CartRepository without losing selected customizations."*
