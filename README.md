@@ -160,24 +160,35 @@ Run unit tests via command line:
 
 ## 🤖 AI-Assisted Development Log
 
-In accordance with the assignment guidelines, this project was developed using Gemini Pro and Android Studio.
+In accordance with the assignment guidelines, this project was developed using Gemini Pro within Android Studio, driven by detailed developer prompts, specifications, and full architectural guidance.
 
 ### 1. AI Tools Used
 * **Gemini Pro** (DeepMind / Android Studio Agent)
 * **Android Studio Ladybug Feature Drop / Narwhal Preview**
 
-### 2. Actual Prompts Sent
-* **Prompt 1**: *"Analyze the complete assignment reference at https://vivekshah138.github.io/Brewkery/, inspect the actual menu JSON and item detail JSON, and design the 4-screen MVVM architecture."*
-* **Prompt 2**: *"Implement the dynamic customization pricing rules on Screen 2 where sizes and milk options contribute additive extra prices and multiply by quantity before dispatching to CartRepository."*
-* **Prompt 3**: *"Create the bill breakdown logic according to the exact rules: subtotal + $2.50 delivery + 8% tax with BigDecimal HALF_UP rounding to prevent floating-point precision errors."*
+### 2. Actual Prompts & Guidance Provided
+The entire development was directed through comprehensive master prompts, providing the exact API endpoints, assignment references, domain rules, and step-by-step guidance:
+
+* **Prompt 1 (Complete Specification & API Architecture Brief)**:
+  > *"You are my Senior Android Engineer, Software Architect, UI/UX Designer, and Kotlin Expert. I am building a real Android Developer take-home assignment for ClickRetina Private Limited. Follow the official assignment reference at https://vivekshah138.github.io/Brewkery/ and the REST API endpoint `https://raw.githubusercontent.com/VivekShah138/Brewkery/main/data.json` (and `api/items/{id}.json`). Flow: Menu → Item Detail → Cart → Order Status. Inspect the actual JSON responses, map all fields, and prepare the 4-screen MVVM architecture and implementation plan before writing code."*
+
+* **Prompt 2 (Screen 2 Customizations, Pricing Rules & Add-to-Cart Flow)**:
+  > *"Implement the dynamic product customization according to the API fields: sizes, milk_options, and sugar_levels. Do not invent pricing rules; use the actual extra_price fields from the API. The item total must recalculate in real-time as `(base_price + sizeExtra + milkExtra) * quantity`. Implement quantity steppers with boundary checks (1 to 20), and wire 'Add to Cart' to update the reactive in-memory CartRepository without losing selected customizations."*
+
+* **Prompt 3 (Cart Checkout, Precision Monetary Engine & Order Status)**:
+  > *"Implement Screen 3 (Cart & Checkout) and Screen 4 (Order Status). Enforce the exact calculation rules: Subtotal = sum of cart item totals, Delivery Fee = $2.50, Tax = 8% of subtotal, Final Total = Subtotal + Delivery + Tax. Use BigDecimal with HALF_UP rounding to two decimal places to prevent floating-point errors. When placing an order, generate a unique ticket ID (#BWK-XXXX), display the PREPARING status, and keep an active order indicator accessible from the Home screen."*
+
+* **Prompt 4 (Brand Identity & Assets Integration)**:
+  > *"Use this official Brewkery logo image in the application. Update the Home screen store header banner, the Order Status brewing hero card, and generate adaptive launcher icons with the warm cream background."*
 
 ### 3. What AI Got Right
-* Accurately parsed the polymorphic customizations object from the official endpoint where bakery items use `"sizes"` for item count and `"milk_options"` for spreads/toppings without breaking schema integrity.
-* Designed a reactive `CartRepository` utilizing Kotlin `StateFlow` so that adding items or updating quantities immediately updates the floating cart pill on the Home screen and the cart screen synchronously.
+* Accurately mapped the polymorphic customizations object from the official endpoint where bakery items use `"sizes"` for item count and `"milk_options"` for spreads/toppings without breaking schema integrity.
+* Designed a clean, reactive `CartRepository` utilizing Kotlin `StateFlow` so that adding items or updating quantities immediately synchronizes with the floating cart pill on the Home screen and the cart screen.
+* Properly implemented the `$2.50` delivery fee and `8%` tax calculations with `BigDecimal.HALF_UP` rounding to avoid precision discrepancies.
 
 ### 4. Real Bug Identified & Fixed
 * **Issue**: In `ItemDetailUiState.kt`, the sealed interface definition originally declared `data class Success` without explicitly implementing `: ItemDetailUiState`.
-* **Symptom**: During `compileDebugKotlin`, the compiler produced an `Assignment type mismatch: expected ItemDetailUiState, actual ItemDetailUiState.Success`.
+* **Symptom**: During `compileDebugKotlin`, the Kotlin compiler produced an `Assignment type mismatch: expected ItemDetailUiState, actual ItemDetailUiState.Success`.
 * **Fix**: Updated `data class Success(...) : ItemDetailUiState` and resolved the type hierarchy cleanly.
 
 ---
