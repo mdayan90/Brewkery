@@ -7,7 +7,6 @@
 
 A native Android coffee and artisan bakery ordering application built for the **ClickRetina Private Limited** take-home assessment.
 
-- **Assignment Prototype Reference**: [https://vivekshah138.github.io/Brewkery/](https://vivekshah138.github.io/Brewkery/)
 - **REST API Endpoint**: `https://raw.githubusercontent.com/VivekShah138/Brewkery/main/data.json`
 
 ---
